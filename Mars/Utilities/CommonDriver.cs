@@ -21,8 +21,7 @@ namespace Mars.Utilities
 
             //Login page initialization and definition
             LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginSteps(driver);
-           
+            loginPageObj.LoginSteps(driver);           
 
         }
 

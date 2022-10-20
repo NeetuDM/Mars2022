@@ -102,7 +102,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("[I add skills of the seller]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.Then("[I should be able to create skill record sucessfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+   testRunner.Then("[I should be able to create skill record sucessfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -111,8 +111,8 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("[Edit existing record of the seller on the profil page]")]
         [NUnit.Framework.CategoryAttribute("EditeSkills")]
-        [NUnit.Framework.TestCaseAttribute("Manual Testing", "Intermediate", null)]
-        public void EditExistingRecordOfTheSellerOnTheProfilPage(string language, string level, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Manual Testing", null)]
+        public void EditExistingRecordOfTheSellerOnTheProfilPage(string skill, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "EditeSkills"};
@@ -122,8 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Language", language);
-            argumentsOfScenario.Add("Level", level);
+            argumentsOfScenario.Add("Skill", skill);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Edit existing record of the seller on the profil page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 13
 this.ScenarioInitialize(scenarioInfo);
@@ -142,10 +141,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("[I navigated to the profile page]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
- testRunner.And("[I edit the existing skill record]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("[I update \'{0}\' on the existing skill record]", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 17
- testRunner.Then("[The skill record should be edited sucessfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("[The record should have updated \'{0}\']", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -171,13 +170,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 24
-testRunner.Given("[I navigated to the profile page]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I logged into the Mars website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 25
-testRunner.When("[I delete the edited skill record]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When("I navigate to the Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 26
-testRunner.Then("[Edited skill record should be delted sucessfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.And("I delete the extisting edited skill record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 27
+testRunner.Then("Record should be deleted sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

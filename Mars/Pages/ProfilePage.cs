@@ -1,7 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-
-
+using OpenQA.Selenium.Internal;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 
 namespace Mars.Pages
 {
@@ -10,28 +11,29 @@ namespace Mars.Pages
         public void GotoProfilePage(IWebDriver driver)
         {
 
-             //Nevigate to Profile Page (Identify the Profile Button and click)
-              IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
-              profileButton.Click();
-              Thread.Sleep(1000);
+            //Nevigate to Profile Page (Identify the Profile Button and click)
+            IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
+            profileButton.Click();
+            Thread.Sleep(1000);
 
             // Assert if user is able to go to profile page
-             IWebElement newProfileNAme =driver.FindElement(By.XPath("//div[@class='ui fluid accordion']"));
-             Assert.That(newProfileNAme.Text == "Neetu Dhoundiyal", "Actual name and Expected name do not match");
+            IWebElement newProfileNAme = driver.FindElement(By.XPath("//div[@class='ui fluid accordion']"));
+            Assert.That(newProfileNAme.Text == "Neetu Dhoundiyal", "Actual name and Expected name do not match");
 
         }
-        
+
         public void CreateAvailabilty(IWebDriver driver)
         {
+            Thread.Sleep(3000);
             //Click on the Availablity Dropdown menu and select full time
-            //i[@class='right floated outline small write icon']
-            IWebElement editAvailaibalityButton =  driver.FindElement(By.XPath("//i[@class='right floated outline small write icon']"));
+            IWebElement editAvailaibalityButton = driver.FindElement(By.XPath("//i[@class='right floated outline small write icon']"));
             editAvailaibalityButton.Click();
-
+            Thread.Sleep(3000);
 
             IWebElement availabilityDropdownmenu = driver.FindElement(By.XPath("//select[@class='ui right labeled dropdown']"));
             //("//div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
             availabilityDropdownmenu.Click();
+            Thread.Sleep(1000);
 
             IWebElement fulltimeOption = driver.FindElement(By.XPath("//option[@value='1']"));
             //div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div
@@ -56,6 +58,8 @@ namespace Mars.Pages
             //Create Languages
             //Identify the Languages Button and click
             IWebElement languagesButton = driver.FindElement(By.XPath("//a[@data-tab='first']"));
+
+            //("//a[@data-tab='first']"));
             languagesButton.Click();
             Thread.Sleep(3000);
 
@@ -86,19 +90,16 @@ namespace Mars.Pages
             Addbutton.Click();
             Thread.Sleep(3000);
 
-            //IWebElement englishhasbeenaddedtoyourlanguageAlert = driver.FindElement(By.XPath("/html/body/div[1]/div"));
-           // Thread.Sleep(3000);
-
             // Assert that Language record has been created.
 
             //Nevigate to Profile Page(Identify the Profile Button and click)
             //IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
             //profileButton.Click();
             //Thread.Sleep(5000);
-           
+
             //IWebElement newLanguage = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]"));
             //IWebElement newLanguageLevel = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[2]"));
-            
+
             //Assert.That(newLanguage.Text == "English", "Actual Code and expected code do not Match");
             //Assert.That(newLanguageLevel.Text == "Fluent", "Actual Code and expected code do Match");
 
@@ -107,39 +108,41 @@ namespace Mars.Pages
         public string GetnewLanguage(IWebDriver driver)
         {
 
-            IWebElement newLanguage = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]"));
+            IWebElement newLanguage = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
             return newLanguage.Text;
         }
 
         public string GetnewLanguageLevel(IWebDriver driver)
         {
 
-            IWebElement newLanguageLevel = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[2]"));
+            IWebElement newLanguageLevel = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+
             return newLanguageLevel.Text;
         }
-        public void EditLanguage(IWebDriver driver)
+        public void EditLanguage(IWebDriver driver, string language)
 
         {
-
+            Thread.Sleep(3000);
             //Identify the Languages Button and click
             IWebElement languagesButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
             languagesButton.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
             //Edit Languages
             //Identify the editButton and click
-            IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[last()]/span[1]/i"));
+            IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/span[1]/i"));
             editButton.Click();
             Thread.Sleep(3000);
 
             //Edit Language record
 
-            IWebElement editlanguageTextbox = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
+            IWebElement editlanguageTextbox = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[1]/input"));
             editlanguageTextbox.Clear();
-            editlanguageTextbox.SendKeys("French");
+            editlanguageTextbox.SendKeys(language);
             Thread.Sleep(3000);
 
-            IWebElement editLevelDropdown = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[2]"));
+            IWebElement editLevelDropdown = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[2]"));
             editLevelDropdown.Click();
             Thread.Sleep(3000);
 
@@ -158,14 +161,20 @@ namespace Mars.Pages
             profileButton.Click();
             Thread.Sleep(5000);
 
-            // Assert that language record has been edited
+        }
+        // Assert that language record has been edited
+        public string GetEditedLanguageLevel(IWebDriver driver, string language)
+        {
+            IWebElement editedLanguageLevel = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            return editedLanguageLevel.Text;
 
-            IWebElement editLanguageTextBox = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]"));
-            IWebElement editLanguageLevelDropdown = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[2]"));
 
-            Assert.That(editLanguageTextBox.Text == "French", "Actual Code and expected code do not Match");
-            Assert.That(editLanguageLevelDropdown.Text == "Basic", "Actual Code and expected code do Match");
+            //public string GetEditedLanguageDropdown(IWebDriver driver)
+            //{
+            //IWebElement editedLanguageDropdown = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[2]"));
+            //return editedLanguageDropdown.Text;
 
+            //}
         }
         public void DeleteLanguage(IWebDriver driver)
 
@@ -175,32 +184,29 @@ namespace Mars.Pages
             profileButton.Click();
             Thread.Sleep(5000);
 
-            IWebElement editLanguageTextBox1 = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]"));
+            //Identify the Languages Button and click
+            IWebElement languagesButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
+            languagesButton.Click();
+            Thread.Sleep(3000);
 
-            if (editLanguageTextBox1.Text == "French")
+            //Identify the deleteButton and click
+            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
+            deleteButton.Click();
+            Thread.Sleep(5000);
+            
+
+        } 
+        public string GetDeleteLanguage(IWebDriver driver)
+
             {
-                             
-                //Identify the deleteButton and click
-                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
-                deleteButton.Click();
-                Thread.Sleep(5000);
-            }
-
-            else
-            {
-                Assert.Fail("Record to be deleted hasn't been found. Record not deleted.");
-
-
-
-            }
-                
-
+                IWebElement deletedLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+                return null;
+            
         }
-
         public void CreateSkills(IWebDriver driver)
 
         {
-                        
+
             //Identify the skillsButton and click
             IWebElement skillsButton = driver.FindElement(By.XPath("//a[@data-tab='second']"));
             skillsButton.Click();
@@ -230,23 +236,20 @@ namespace Mars.Pages
             IWebElement AddButton = driver.FindElement(By.XPath("//input[@type='button']"));
             AddButton.Click();
             Thread.Sleep(1000);
-
-            //Assert if new record for skills has been added
-
+                      
             //IWebElement NewSkills = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
             //Assert.That(NewSkills.Text== "Automation Testing", "Actual Skill and expected Skill do Match");
 
+        }    
+            //Assert if new record for skills has been added
+            public string GetnewSkill(IWebDriver driver)
+            {
 
-        }
+             IWebElement newSkill = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+             return newSkill.Text;
+            }
 
-        public string GetnewSkill(IWebDriver driver)
-        {
-
-            IWebElement newSkill = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
-            return newSkill.Text;
-        }
-
-        public void EditSkills(IWebDriver driver)
+        public void EditSkills(IWebDriver driver, string skills)
 
         {
             //Edit Skill record
@@ -257,7 +260,7 @@ namespace Mars.Pages
             Thread.Sleep(1000);
 
             //Identify the editButton and click
-            IWebElement editSkillButton = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i"));
+            IWebElement editSkillButton = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[1]/i"));
             editSkillButton.Click();
             Thread.Sleep(3000);
 
@@ -286,53 +289,47 @@ namespace Mars.Pages
             skillsButton.Click();
             Thread.Sleep(1000);
 
-            IWebElement editSkillTextBox = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
-            IWebElement editSkillLevelDropdown1 = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[2]"));
+            //IWebElement editSkillTextBox = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
+            //IWebElement editSkillLevelDropdown1 = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[2]"));
 
-            Assert.That(editSkillTextBox.Text == "Manual Testing", "Actual Code and expected code do not Match");
-            Assert.That(editSkillLevelDropdown1.Text == "Intermediate", "Actual Code and expected code do Match");
-
-
+            //Assert.That(editSkillTextBox.Text == "Manual Testing", "Actual Code and expected code do not Match");
+            //Assert.That(editSkillLevelDropdown1.Text == "Intermediate", "Actual Code and expected code do Match");
 
         }
+        //Assert that new record has been edited.
+        public string GetEditedSkillLevel(IWebDriver driver, string skill)
+        {
+            IWebElement editedSkill = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            return editedSkill.Text;
+        }
+
         public void DeleteSkills(IWebDriver driver)
 
         {
-           //Go to the profile page where edited Skills record will be 
+            //Go to the profile page where edited Skills record will be 
             IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
             profileButton.Click();
             Thread.Sleep(5000);
 
             //Identify the skillsButton and click
-            IWebElement skillsButton = driver.FindElement(By.XPath("//a[@data-tab='second']"));
+            IWebElement skillsButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
+            //("//a[@data-tab='second']"));
             skillsButton.Click();
             Thread.Sleep(5000);
 
-
-            IWebElement editSkillsTextBox1 = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
-
-            if (editSkillsTextBox1.Text == "Manual Testing")
-            {
-
-                //Identify the deleteButton and click
-                IWebElement deleteButton1 = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
-                deleteButton1.Click();
-                Thread.Sleep(5000);
-            }
-
-            else
-            {
-                Assert.Fail("Record to be deleted hasn't been found. Record not deleted.");
-
-
-
-            }
-
+            //Identify the deleteButton and click
+            IWebElement deleteButton1 = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
+            deleteButton1.Click();
+            Thread.Sleep(5000);
 
         }
 
-
+        public string GetdeleteSkills(IWebDriver driver)
+        { 
+            IWebElement deleteSkills = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            return null;
+        
+        }
     }
-
 
 }

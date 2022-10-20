@@ -74,14 +74,14 @@ namespace Mars.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Add Language of Seller in the profile page]")]
+        [NUnit.Framework.DescriptionAttribute("1-[Add Language of Seller in the profile page]")]
         [NUnit.Framework.CategoryAttribute("Add_Language")]
-        public void AddLanguageOfSellerInTheProfilePage()
+        public void _1_AddLanguageOfSellerInTheProfilePage()
         {
             string[] tagsOfScenario = new string[] {
                     "Add_Language"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Add Language of Seller in the profile page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1-[Add Language of Seller in the profile page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,10 +109,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Edit Language record of the seller in the profile page]")]
+        [NUnit.Framework.DescriptionAttribute("2-[Edit Language record of the seller in the profile page]")]
         [NUnit.Framework.CategoryAttribute("Edit_Language")]
-        [NUnit.Framework.TestCaseAttribute("French", "Basic", null)]
-        public void EditLanguageRecordOfTheSellerInTheProfilePage(string language, string level, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("French", null)]
+        public void _2_EditLanguageRecordOfTheSellerInTheProfilePage(string language, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Edit_Language"};
@@ -123,8 +123,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Language", language);
-            argumentsOfScenario.Add("Level", level);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Edit Language record of the seller in the profile page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2-[Edit Language record of the seller in the profile page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -142,25 +141,25 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("[I navigate to Language tab in the profile page]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 17
- testRunner.And(string.Format("I update \'{0}\', \'{1}\' language details", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I update \'{0}\' on existing language record", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 18
- testRunner.Then(string.Format("The existing record for Language \'{0}\', \'{1}\'should be updated sucessfully", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("The record should have updated \'{0}\'", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Delete Edited Language record of Seller in the profile page]")]
+        [NUnit.Framework.DescriptionAttribute("3-[Delete the Edited language record from the Profile page.]")]
         [NUnit.Framework.CategoryAttribute("Delete_Language")]
-        public void DeleteEditedLanguageRecordOfSellerInTheProfilePage()
+        public void _3_DeleteTheEditedLanguageRecordFromTheProfilePage_()
         {
             string[] tagsOfScenario = new string[] {
                     "Delete_Language"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Delete Edited Language record of Seller in the profile page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3-[Delete the Edited language record from the Profile page.]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -170,17 +169,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
- testRunner.Given("[I logged into the Mars website]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 26
- testRunner.When("[I navigate to the Language Tab in the profile page]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 27
- testRunner.And("[I delete the edited language record]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I logged into the Mars website.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 28
- testRunner.Then("[Edited Language record should be deleted sucessfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I navigate to the Language Tab in the profile page.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 29
+ testRunner.And("I delete the edited language record.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 30
+ testRunner.Then("Edited Language record should be deleted sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 namespace Mars.StepDefinitions
 {
     [Binding]
-    public class SellerSkillsStepDefinitions: CommonDriver
+    public class SellerSkillsStepDefinitions : CommonDriver
     {
         [Given(@"\[I logged into website]")]
         public void GivenILoggedIntoWebsite()
@@ -45,46 +45,75 @@ namespace Mars.StepDefinitions
 
         }
 
-        //[Given(@"\[I logged into the Website]")]
-        //public void GivenILoggedIntoTheWebsite()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [Given(@"\[I logged into the Website]")]
+        public void GivenILoggedIntoTheWebsite()
+        {
+            //open the Chrome Browser
+            driver = new ChromeDriver();
+            LoginPage loginPageObj = new LoginPage();
+            loginPageObj.LoginSteps(driver);
+        }
 
-        //[When(@"\[I navigated to the profile page]")]
-        //public void WhenINavigatedToTheProfilePage()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [When(@"\[I navigated to the profile page]")]
+        public void WhenINavigatedToTheProfilePage()
+        {
+            //Profile page initilalization
+            ProfilePage profilePageObj = new ProfilePage();
+            profilePageObj.GotoProfilePage(driver);
+        }
 
-        //[When(@"\[I edit the existing skill record]")]
-        //public void WhenIEditTheExistingSkillRecord()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [When(@"\[I update '([^']*)' on the existing skill record]")]
+        public void WhenIUpdateOnTheExistingSkillRecord(string skill)
+        {
 
-        //[Then(@"\[The skill record should be edited sucessfully]")]
-        //public void ThenTheSkillRecordShouldBeEditedSucessfully()
-        //{
-        //    throw new PendingStepException();
-        //}
+            ProfilePage profilePageObj = new ProfilePage();
+            profilePageObj.EditSkills(driver, skill);
+        }
 
-        //[Given(@"\[I navigated to the profile page]")]
-        //public void GivenINavigatedToTheProfilePage()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [Then(@"\[The record should have updated '([^']*)']")]
+        public void ThenTheRecordShouldHaveUpdated(string skill)
+        {
+            ProfilePage profilePageObj = new ProfilePage();
 
-        //[When(@"\[I delete the edited skill record]")]
-        //public void WhenIDeleteTheEditedSkillRecord()
-        //{
-        //    throw new PendingStepException();
-        //}
+            string GetEditedSkillLevel = profilePageObj.GetEditedSkillLevel(driver, skill);
+            Assert.That(GetEditedSkillLevel == skill, "Actual Code and expected code do not Match");
+        }
 
-        //[Then(@"\[Edited skill record should be delted sucessfully]")]
-        //public void ThenEditedSkillRecordShouldBeDeltedSucessfully()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [Given(@"I logged into the Mars website")]
+        public void GivenILoggedIntoTheMarsWebsite()
+        {
+            //open the Chrome Browser
+            driver = new ChromeDriver();
+            LoginPage loginPageObj = new LoginPage();
+            loginPageObj.LoginSteps(driver);
+        }
+
+
+        [When(@"I navigate to the Profile page")]
+        public void WhenINavigateToTheProfilePage()
+        {
+            //Profile page initilalization
+            ProfilePage profilePageObj = new ProfilePage();
+            profilePageObj.GotoProfilePage(driver);
+        }
+
+
+        [When(@"I delete the extisting edited skill record")]
+        public void WhenIDeleteTheExtistingEditedSkillRecord()
+        {
+            ProfilePage profilePageObj = new ProfilePage();
+            profilePageObj.DeleteSkills(driver);
+        }
+
+
+         [Then(@"Record should be deleted sucessfully")]
+         public void ThenRecordShouldBeDeletedSucessfully()
+         {
+            ProfilePage profilePageObj = new ProfilePage();
+            string GetdeleteSkills = profilePageObj.GetdeleteSkills(driver);
+
+           Assert.That(GetdeleteSkills == null, "Actual Code and expected code do not Match");
+         }
+
     }
 }
