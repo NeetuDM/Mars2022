@@ -8,6 +8,7 @@ namespace Mars.Pages
 {
     public class ProfilePage
     {
+
         public void GotoProfilePage(IWebDriver driver)
         {
 
@@ -33,7 +34,7 @@ namespace Mars.Pages
             IWebElement availabilityDropdownmenu = driver.FindElement(By.XPath("//select[@class='ui right labeled dropdown']"));
             //("//div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
             availabilityDropdownmenu.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             IWebElement fulltimeOption = driver.FindElement(By.XPath("//option[@value='1']"));
             //div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div
@@ -55,14 +56,16 @@ namespace Mars.Pages
 
         public void CreateLanguage(IWebDriver driver)
         {
+            Thread.Sleep(4000);
             //Create Languages
             //Identify the Languages Button and click
             IWebElement languagesButton = driver.FindElement(By.XPath("//a[@data-tab='first']"));
 
-            //("//a[@data-tab='first']"));
+            Thread.Sleep(3000);
             languagesButton.Click();
             Thread.Sleep(3000);
 
+            Thread.Sleep(3000);
             //Identify the addnewButton and click
             IWebElement addnewButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
             addnewButton.Click();
@@ -123,25 +126,27 @@ namespace Mars.Pages
         public void EditLanguage(IWebDriver driver, string language)
 
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(4000);
             //Identify the Languages Button and click
             IWebElement languagesButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
             languagesButton.Click();
             Thread.Sleep(3000);
 
+
+            Thread.Sleep(3000);
             //Edit Languages
             //Identify the editButton and click
             IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/span[1]/i"));
             editButton.Click();
             Thread.Sleep(3000);
-
-            //Edit Language record
-
+                        
+            Thread.Sleep(3000);
             IWebElement editlanguageTextbox = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[1]/input"));
             editlanguageTextbox.Clear();
             editlanguageTextbox.SendKeys(language);
             Thread.Sleep(3000);
 
+            //Identify the editlevelDropdown Button and click
             IWebElement editLevelDropdown = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[2]"));
             editLevelDropdown.Click();
             Thread.Sleep(3000);
@@ -149,17 +154,18 @@ namespace Mars.Pages
             //Identify the Basictoptiondropdown and select the option
             IWebElement Basicoptiondropdown = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[2]/select/option[2]"));
             Basicoptiondropdown.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
             //Identify the updateButton and click
             IWebElement updateButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]\r\n"));
             updateButton.Click();
             Thread.Sleep(2000);
 
+            Thread.Sleep(4000);
             //Nevigate to Profile Page(Identify the Profile Button and click)
             IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
             profileButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(4000);
 
         }
         // Assert that language record has been edited
@@ -179,10 +185,11 @@ namespace Mars.Pages
         public void DeleteLanguage(IWebDriver driver)
 
         {
+            Thread.Sleep(4000);
             //Go to the profile page where edited Language record will be 
             IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
             profileButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(4000);
 
             //Identify the Languages Button and click
             IWebElement languagesButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
@@ -192,7 +199,7 @@ namespace Mars.Pages
             //Identify the deleteButton and click
             IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
             deleteButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(4000);
             
 
         } 
@@ -206,7 +213,7 @@ namespace Mars.Pages
         public void CreateSkills(IWebDriver driver)
 
         {
-
+            Thread.Sleep(4000);
             //Identify the skillsButton and click
             IWebElement skillsButton = driver.FindElement(By.XPath("//a[@data-tab='second']"));
             skillsButton.Click();
@@ -252,12 +259,12 @@ namespace Mars.Pages
         public void EditSkills(IWebDriver driver, string skills)
 
         {
-            //Edit Skill record
+            Thread.Sleep(4000);
             //Identify the skillsButton and click
             IWebElement skillsButton = driver.FindElement(By.XPath("//a[@data-tab='second']"));
             //*[@id=\'account-profile-section\']/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
             skillsButton.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             //Identify the editButton and click
             IWebElement editSkillButton = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[1]/i"));
@@ -276,7 +283,7 @@ namespace Mars.Pages
             //Identify the IntermediateLeveldropdown and select the option
             IWebElement IntermediateLeveldropdown = driver.FindElement(By.XPath("//option[@value='Intermediate']"));
             IntermediateLeveldropdown.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             //Identify the updateSkillButton and click
             IWebElement updateSkillButton = driver.FindElement(By.XPath("//input[@value='Update']"));
@@ -306,24 +313,26 @@ namespace Mars.Pages
         public void DeleteSkills(IWebDriver driver)
 
         {
+            Thread.Sleep(3000);
             //Go to the profile page where edited Skills record will be 
             IWebElement profileButton = driver.FindElement(By.XPath("//*[@id=\'account-profile-section\']/div/section[1]/div/a[2]\r\n"));
             profileButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
             //Identify the skillsButton and click
             IWebElement skillsButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
             //("//a[@data-tab='second']"));
             skillsButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
             //Identify the deleteButton and click
             IWebElement deleteButton1 = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
             deleteButton1.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
         }
-
+        
+        //Assert that new record has been deleted.
         public string GetdeleteSkills(IWebDriver driver)
         { 
             IWebElement deleteSkills = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));

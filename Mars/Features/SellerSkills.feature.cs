@@ -74,14 +74,14 @@ namespace Mars.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Add skills of the Seller on the profile page ]")]
+        [NUnit.Framework.DescriptionAttribute("1-[Add skills of the Seller on the profile page ]")]
         [NUnit.Framework.CategoryAttribute("AddSkills")]
-        public void AddSkillsOfTheSellerOnTheProfilePage()
+        public void _1_AddSkillsOfTheSellerOnTheProfilePage()
         {
             string[] tagsOfScenario = new string[] {
                     "AddSkills"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Add skills of the Seller on the profile page ]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1-[Add skills of the Seller on the profile page ]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,10 +109,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Edit existing record of the seller on the profil page]")]
+        [NUnit.Framework.DescriptionAttribute("2-[Edit existing record of the seller on the profil page]")]
         [NUnit.Framework.CategoryAttribute("EditeSkills")]
         [NUnit.Framework.TestCaseAttribute("Manual Testing", null)]
-        public void EditExistingRecordOfTheSellerOnTheProfilPage(string skill, string[] exampleTags)
+        public void _2_EditExistingRecordOfTheSellerOnTheProfilPage(string skill, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "EditeSkills"};
@@ -123,7 +123,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Skill", skill);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Edit existing record of the seller on the profil page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2-[Edit existing record of the seller on the profil page]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -151,14 +151,14 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Delete the skills record sucessfully]")]
+        [NUnit.Framework.DescriptionAttribute("3-[Delete the skills record sucessfully]")]
         [NUnit.Framework.CategoryAttribute("DeleteSkills")]
-        public void DeleteTheSkillsRecordSucessfully()
+        public void _3_DeleteTheSkillsRecordSucessfully()
         {
             string[] tagsOfScenario = new string[] {
                     "DeleteSkills"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Delete the skills record sucessfully]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3-[Delete the skills record sucessfully]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

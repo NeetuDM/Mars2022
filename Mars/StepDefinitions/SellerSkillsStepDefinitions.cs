@@ -112,7 +112,7 @@ namespace Mars.StepDefinitions
             ProfilePage profilePageObj = new ProfilePage();
             string GetdeleteSkills = profilePageObj.GetdeleteSkills(driver);
 
-           Assert.That(GetdeleteSkills == null, "Actual Code and expected code do not Match");
+           Assert.That(GetdeleteSkills !="Manual Testing", "Actual Code and expected code do not Match");
          }
 
     }
